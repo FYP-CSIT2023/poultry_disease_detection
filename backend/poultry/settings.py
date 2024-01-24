@@ -58,10 +58,11 @@ STATICFILES_DIRS = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",  # Replace with your React app's origin
+    "http://localhost:5173", 
+     "http://localhost:8000", # Replace with your React app's origin
     # Add other allowed origins as needed
 ]
-
+CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_HEADERS = [
     'access-control-allow-origin',
     'content-type',
