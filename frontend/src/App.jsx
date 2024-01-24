@@ -1,14 +1,10 @@
-import './App.css'
-
+import "./App.css";
+import Home from "./components/Home";
 function App() {
-
   return (
-    <>
-      <h1>Project Starter Setup Hello world</h1>
-      <p>test login</p>
-    </>
-
-  )
+    <div className="App">
+      <Home />
+    </div>
+  );
 }
-
-export default App
+export default App;
