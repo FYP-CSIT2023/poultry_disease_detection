@@ -2,16 +2,20 @@ import { useState } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 
-const UploadButton = ({ buttonText, icon, onUpload }) => {
+const UploadButton = ({ buttonText, onUpload }) => {
   const [uploadedImage, setUploadedImage] = useState(null);
+  const [imageFile, setImageFile] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [responseData, setResponseData] = useState('');
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
+    setImageFile(file);
 
     if (file) {
       if (file.type.startsWith('image/')) {
-        setUploadedImage(file);
+        // setUploadedImage(file);
+        setUploadedImage(URL.createObjectURL(file));
         onUpload(file);
       } else {
         alert('Please choose a valid image file.');
@@ -24,8 +28,8 @@ const UploadButton = ({ buttonText, icon, onUpload }) => {
   
     // Create a FormData object to send the image file
     const formData = new FormData();
-    formData.append('image', uploadedImage);
-    console.log(uploadedImage);
+    formData.append('image', imageFile);
+    console.log(imageFile);
 
     // Assuming you have a Django API endpoint at 'your-api-endpoint'
     axios.post('http://127.0.0.1:8000/detect/uploads/', formData, {
@@ -36,6 +40,7 @@ const UploadButton = ({ buttonText, icon, onUpload }) => {
       .then((response) => {
         // Handle the response data as needed
         console.log('API Response:', response.data.predicted_class);
+        setResponseData(response.data.predicted_class);
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -51,7 +56,8 @@ const UploadButton = ({ buttonText, icon, onUpload }) => {
       alignItems: 'center',
       justifyContent: 'center',
       flexDirection:'column',
-      height: '50%',
+      height: '85vh',
+      border: '1px solid #3498db',
       },
   
     label: {
@@ -62,7 +68,8 @@ const UploadButton = ({ buttonText, icon, onUpload }) => {
       borderRadius: '5px',
       display: 'flex',
       flexDirection: 'column',
-      alignItems: 'center'
+      alignItems: 'center',
+      fontSize: '24px',
     },
  
     labelImg: {
@@ -86,6 +93,26 @@ const UploadButton = ({ buttonText, icon, onUpload }) => {
   
     uploadedImageLabel:{
       marginBottom: '20px',
+      fontSize: '24px',
+      fontWeight: 600,
+    },
+    uploadImageContainer:{
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '15px',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    predictClassTxt: {
+      fontSize: '30px',
+      color: '#3498db',
+    },
+    detectBtn:{
+      fontSize: '24px',
+      padding: '10px 20px',
+      backgroundColor: '#49be25',
+      borderRadius: '5px',
+      color: '#fff',
     }
   };
 
@@ -101,12 +128,13 @@ const UploadButton = ({ buttonText, icon, onUpload }) => {
 
       <div style={styles.uploadedImageContainer}>
         {uploadedImage && (
-          <div>
+          <div style={styles.uploadImageContainer}>
             <p style={styles.uploadedImageLabel}>Uploaded Image :</p>
             <img src={uploadedImage} alt="Uploaded" style={styles.uploadedImage} />
-            <button onClick={handleButtonClick} disabled={loading}>
+            <button style={styles.detectBtn} onClick={handleButtonClick} disabled={loading}>
               {loading ? 'Loading...' : 'Detect'}
             </button>
+            {responseData && <p style={styles.predictClassTxt}>The predicted class is: {responseData}</p>}
           </div>
         )}
       </div>
