@@ -19,10 +19,10 @@ def load_and_preprocess_test_image(image_path):
     if image_path.startswith('http'):
         # Load image from URL
         response = requests.get(image_path)
-        img = Image.open(BytesIO(response.content)).resize((64, 64))
+        img = Image.open(BytesIO(response.content)).resize((128, 128))
     else:
         # Load local image
-        img = Image.open(image_path).resize((64, 64))
+        img = Image.open(image_path).resize((128, 128))
     
     img_array = np.array(img) / 255.0
     return img_array
