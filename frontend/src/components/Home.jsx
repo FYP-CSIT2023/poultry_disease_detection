@@ -1,17 +1,15 @@
-import React from "react";
-import Navbar from "./Navbar";
-import UploadButton from "./upload";
-const Home = () => {
-  
-  const handleUpload = (file) => {
-    console.log('Uploading file:', file);}
+import React from 'react';
+import Navbar from './Navbar';
+import './home.css';
+import Landing from './Landing';
 
+const Home = () => {
   return (
     <div className="home-container">
+      <div className="gray-top"></div>
       <Navbar />
-      <UploadButton buttonText="Upload Image" onUpload={handleUpload} />
+      <Landing />
     </div>
-   
   );
 };
 

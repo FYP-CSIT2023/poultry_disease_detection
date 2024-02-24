@@ -1,0 +1,12 @@
+
+.navbar-links-container {
+  z-index: 1;
+  margin-top: 20px;
+}
+.link {
+  margin-right: 3rem;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  font-size: 1.3rem;
+  font-weight: 600;
+}
