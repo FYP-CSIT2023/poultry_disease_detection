@@ -10,7 +10,7 @@ import {jwtDecode} from 'jwt-decode';
 import RequireAuth from "./components/RequireAuth";
 
 
-const isAuthenticated = () => {
+export const isAuthenticated = () => {
     // Retrieve the JWT token from localStorage
     const token = localStorage.getItem('access_token');
 
