@@ -3,7 +3,6 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import Navbar from './Navbar';
 
-
 const UploadButton = ({ buttonText, onUpload }) => {
   const [uploadedImage, setUploadedImage] = useState(null);
   const [imageFile, setImageFile] = useState(null);
@@ -62,7 +61,7 @@ const UploadButton = ({ buttonText, onUpload }) => {
       flexDirection: 'column',
       height: '85vh',
       border: '1px solid #3498db',
-      marginTop: '80px',
+      marginTop: '110px',
     },
 
     label: {
@@ -118,12 +117,22 @@ const UploadButton = ({ buttonText, onUpload }) => {
       backgroundColor: '#49be25',
       borderRadius: '5px',
       color: '#fff',
+      cursor: 'pointer',
     },
   };
 
   return (
     <>
-      <div style={{ backgroundColor: '#111111c9', position: 'absolute', top:0, left:0, width:'100%', padding:"15px" }}>
+      <div
+        style={{
+          backgroundColor: '#111111c9',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          padding: '15px',
+        }}
+      >
         <Navbar />
       </div>
       <div style={styles.UploadButtonContainer}>
