@@ -4,6 +4,7 @@
   margin-top: 20px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .login-logout-button {
@@ -28,4 +29,8 @@
   color: rgb(255, 255, 255);
   font-size: 1.3rem;
   font-weight: 600;
+}
+
+.link:hover {
+  color: #1eced4;
 }

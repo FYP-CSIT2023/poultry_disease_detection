@@ -16,7 +16,6 @@ const UploadButton = ({ buttonText, onUpload }) => {
 
     if (file) {
       if (file.type.startsWith('image/')) {
-        // setUploadedImage(file);
         setUploadedImage(URL.createObjectURL(file));
         onUpload(file);
       } else {
@@ -28,12 +27,9 @@ const UploadButton = ({ buttonText, onUpload }) => {
   const handleButtonClick = () => {
     setLoading(true);
 
-    // Create a FormData object to send the image file
     const formData = new FormData();
     formData.append('image', imageFile);
-    console.log(imageFile);
 
-    // Assuming you have a Django API endpoint at 'your-api-endpoint'
     axios
       .post('http://127.0.0.1:8000/detect/uploads/', formData, {
         headers: {
@@ -41,8 +37,6 @@ const UploadButton = ({ buttonText, onUpload }) => {
         },
       })
       .then((response) => {
-        // Handle the response data as needed
-        console.log('API Response:', response.data.predicted_class);
         setResponseData(response.data.predicted_class);
       })
       .catch((error) => {

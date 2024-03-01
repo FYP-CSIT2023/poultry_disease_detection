@@ -15,7 +15,7 @@
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  min-width: 310px;
+  min-width: 450px;
 }
 
 .form-box h2 {
@@ -45,7 +45,6 @@
   cursor: pointer;
 }
 
-
 .form-box button:hover {
   background-color: #45a049;
 }
@@ -57,4 +56,8 @@
 
 .have-account p {
   margin: 0;
+}
+
+.required {
+  color: red;
 }
