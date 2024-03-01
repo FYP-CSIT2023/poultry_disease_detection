@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import './navbar.css';
 import { isAuthenticated } from '../App';
 
-const Navbar = () => {
+const Navbar = ({ style }) => {
   const [authenticated, setAuthenticated] = useState(false);
   const navigate = useNavigate();
 
@@ -28,7 +28,10 @@ const Navbar = () => {
   }, []);
   return (
     <nav>
-      <div className="navbar-links-container">
+      <div
+        className="navbar-links-container"
+        style={style}
+      >
         <div>
           <Link
             className="link"
