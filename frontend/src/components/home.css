@@ -1,0 +1,13 @@
+.home-container {
+  padding: 0 40px;
+}
+
+.gray-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #13141456;
+  z-index: -1;
+}
