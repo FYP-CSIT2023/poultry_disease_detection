@@ -1,4 +1,3 @@
-# poultry_classification/views.py
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -16,8 +15,6 @@ class PoultryImageUpload(APIView):
         poultry_image = PoultryImage(image=image)
         poultry_image.save()
 
-        # Debugging: Print the image path
-        print("Image Path:", poultry_image.image.path)
         classes = ['cocci', 'healthy', 'ncd', 'salmo']
         # Load and preprocess the test image
         test_image = load_and_preprocess_test_image(poultry_image.image.path)
@@ -25,7 +22,7 @@ class PoultryImageUpload(APIView):
         # Make prediction
         predicted_class_index = predict_disease(test_image)
         print("predicted class index in views is:", predicted_class_index)
-        print(type(predicted_class_index))
+
 
         predicted_class = classes[predicted_class_index]
 
@@ -34,6 +31,6 @@ class PoultryImageUpload(APIView):
         poultry_image.predicted_class = str(predicted_class_index)
         poultry_image.save()
 
-        # return Response({"predicted_class_index": predicted_class_index}, status=status.HTTP_201_CREATED)
+        
         response_data = {'predicted_class': predicted_class}
         return JsonResponse(response_data, status=200)

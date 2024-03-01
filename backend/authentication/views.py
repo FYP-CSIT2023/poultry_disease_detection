@@ -60,3 +60,5 @@ class LogoutView(APIView):
             return Response({"detail": "Logout successful"}, status=status.HTTP_200_OK)
 
         return Response({"detail": "Logout successful"}, status=status.HTTP_200_OK)
+
+

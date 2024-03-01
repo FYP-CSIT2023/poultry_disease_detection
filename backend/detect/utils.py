@@ -1,5 +1,3 @@
-
-# from tensorflow.keras.model import load_model
 import numpy as np
 from keras.models import load_model
 from PIL import Image
@@ -7,12 +5,10 @@ import os
 import requests
 from io import BytesIO
 
-# model = load_model('./Model_deploy/poultry_disease_model.h5')
+
 model_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'Model_deploy', 'poultry_disease_model.h5')
 model = load_model(model_path)
 
-# Debugging: Print a message after loading the model
-print("Model Loaded Successfully.")
 
 
 def load_and_preprocess_test_image(image_path):
@@ -36,8 +32,7 @@ def predict_disease(test_image):
 
     # Get the predicted class index
     predicted_class_index = np.argmax(predictions)
-    print("debug")
-    print(predicted_class_index)
+
 
     return predicted_class_index
 
