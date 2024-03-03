@@ -84,7 +84,8 @@ const UploadButton = ({ buttonText, onUpload }) => {
     },
 
     uploadedImage: {
-      maxWidth: '150px',
+      width: '450px',
+      height: '450px',
       borderRadius: '5px',
       boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
     },
