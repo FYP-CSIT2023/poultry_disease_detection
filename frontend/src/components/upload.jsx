@@ -15,7 +15,12 @@ const UploadButton = ({ buttonText, onUpload }) => {
     setImageFile(file);
 
     if (file) {
-      if (file.type.startsWith('image/')) {
+      const filetype = file.type;
+      if (
+        filetype === 'image/jpeg' ||
+        filetype === 'image/png' ||
+        filetype === 'image/jpg'
+      ) {
         setUploadedImage(URL.createObjectURL(file));
         onUpload(file);
       } else {
